@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estudia Mejor | Pomodoro y Técnicas de Estudio Efectivas</title>
+  <meta name="description" content="Utiliza el método Pomodoro junto con técnicas de estudio efectivas como el Método Feynman, Active Recall y estudio espaciado para maximizar tu concentración y rendimiento académico." />
+  <meta name="keywords" content="técnicas de estudio, pomodoro, método feynman, active recall, estudio espaciado, concentración, productividad, temporizador pomodoro, descanso corto, descanso largo" />
+  <meta name="author" content="Leandro Pineda" />
+  <meta name="robots" content="index, follow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Animaciones al hacer scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Botones hover */
+    button:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    /* Temporizador seleccionable */
+    .timer-mode {
+      cursor: pointer;
+      user-select: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
+    .timer-mode.active {
+      background-color: #a78bfa; /* violet-400 */
+      color: white;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-pink-50 to-purple-100 font-sans text-gray-800">
+
+  <!-- Navegación fija -->
+  <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-80 backdrop-blur-md shadow-md z-50 py-4">
+    <ul class="flex justify-center gap-12 text-lg font-semibold">
+      <li><a href="#pomodoro" class="text-pink-600 hover:text-pink-800">Pomodoro</a></li>
+      <li><a href="#tecnicas" class="text-purple-600 hover:text-purple-800">Técnicas</a></li>
+      <li><a href="#conclusion" class="text-indigo-600 hover:text-indigo-800">Conclusión</a></li>
+    </ul>
+  </nav>
+
+  <main class="max-w-4xl mx-auto pt-28 pb-20 px-6 space-y-48">
+
+    <!-- Pomodoro Section -->
+    <section id="pomodoro" class="fade-in p-8 bg-white rounded-3xl shadow-lg">
+      <h2 class="text-5xl font-extrabold text-pink-500 mb-6 text-center">Temporizador Pomodoro 🕒</h2>
+      <p class="text-center max-w-xl mx-auto mb-8 text-lg leading-relaxed">
+        Estudia en ciclos de <strong>25 minutos</strong> con descansos cortos y largos. Controla tu concentración y aumenta tu productividad con este temporizador inteligente.
+      </p>
+
+      <!-- Modos de temporizador -->
+      <div class="flex justify-center gap-6 mb-6">
+        <div id="workMode" class="timer-mode active" aria-label="Modo trabajo">Trabajo (25:00)</div>
+        <div id="shortBreakMode" class="timer-mode" aria-label="Descanso corto">Descanso corto (05:00)</div>
+        <div id="longBreakMode" class="timer-mode" aria-label="Descanso largo">Descanso largo (15:00)</div>
+      </div>
+
+      <div class="bg-pink-100 p-10 rounded-3xl max-w-md mx-auto shadow-inner">
+        <div id="timer" class="text-7xl font-extrabold text-pink-600 mb-8 select-none" aria-live="polite" aria-atomic="true">25:00</div>
+        <div class="flex justify-center gap-8 mb-6">
+          <button onclick="startTimer()" class="bg-pink-400 text-white px-6 py-3 rounded-xl shadow-md hover:bg-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-300" aria-label="Iniciar temporizador">Iniciar</button>
+          <button onclick="pauseTimer()" class="bg-yellow-400 text-white px-6 py-3 rounded-xl shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300" aria-label="Pausar temporizador">Pausar</button>
+          <button onclick="resetTimer()" class="bg-red-400 text-white px-6 py-3 rounded-xl shadow-md hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300" aria-label="Resetear temporizador">Resetear</button>
+        </div>
+        <p class="text-center text-purple-700 font-semibold text-xl select-none" aria-live="polite" aria-atomic="true">Rondas completadas: <span id="roundCount">0</span> / 4</p>
+      </div>
+    </section>
+
+    <!-- Técnicas de Estudio Section -->
+    <section id="tecnicas" class="fade-in p-8 bg-white rounded-3xl shadow-lg space-y-16">
+      <h2 class="text-5xl font-extrabold text-purple-600 mb-12 text-center">Técnicas de Estudio 📚</h2>
+
+      <article>
+        <h3 class="text-3xl font-semibold text-purple-700 mb-4">1. Técnica Pomodoro</h3>
+        <p class="text-lg leading-relaxed">
+          Divide tu estudio en sesiones de <strong>25 minutos</strong> con descansos de <strong>5 minutos</strong>. Evita distracciones y mantén un enfoque intenso para mejorar la productividad. Tras cuatro ciclos, toma un descanso largo de 15 a 30 minutos para recargar.
+        </p>
+      </article>
+
+      <article>
+        <h3 class="text-3xl font-semibold text-purple-700 mb-4">2. Método Feynman</h3>
+        <p class="text-lg leading-relaxed">
+          Explica cualquier concepto con tus propias palabras, como si enseñaras a alguien sin conocimientos previos. Identifica las áreas que no entiendes bien y refuérzalas hasta lograr una comprensión clara y profunda.
+        </p>
+        <ul class="list-disc list-inside mt-4 text-purple-600">
+          <li>Selecciona un tema</li>
+          <li>Explica con palabras simples</li>
+          <li>Detecta vacíos y repasa</li>
+          <li>Simplifica y refina</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 class="text-3xl font-semibold text-purple-700 mb-4">3. Active Recall (Recuerdo Activo)</h3>
+        <p class="text-lg leading-relaxed">
+          En lugar de releer, intenta recordar activamente la información. Usa tarjetas, haz preguntas y responde sin mirar notas. Esto fortalece la memoria y mejora la retención a largo plazo.
+        </p>
+        <ul class="list-disc list-inside mt-4 text-purple-600">
+          <li>Usa flashcards (Anki, Quizlet)</li>
+          <li>Auto-pregúntate mientras estudias</li>
+          <li>Realiza simulacros sin consultar apuntes</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 class="text-3xl font-semibold text-purple-700 mb-4">4. Técnica de Elaboración</h3>
+        <p class="text-lg leading-relaxed">
+          Relaciona la nueva información con lo que ya sabes. Expande y explica ideas para crear conexiones profundas que faciliten la comprensión y el recuerdo.
+        </p>
+        <ul class="list-disc list-inside mt-4 text-purple-600">
+          <li>Haz mapas conceptuales</li>
+          <li>Explica conceptos en voz alta</li>
+          <li>Relaciona ejemplos cotidianos</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 class="text-3xl font-semibold text-purple-700 mb-4">5. Técnica de Estudio Espaciado</h3>
+        <p class="text-lg leading-relaxed">
+          Distribuye tus sesiones de estudio en el tiempo, repasando el contenido con intervalos crecientes para mejorar la retención a largo plazo y evitar el olvido.
+        </p>
+        <ul class="list-disc list-inside mt-4 text-purple-600">
+          <li>Planifica repasos periódicos</li>
+          <li>Utiliza aplicaciones de repaso espaciado</li>
+          <li>No acumules todo para último momento</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Conclusión Section -->
+    <section id="conclusion" class="fade-in p-8 bg-white rounded-3xl shadow-lg text-center">
+      <h2 class="text-5xl font-extrabold text-indigo-600 mb-6">Conclusión 🎯</h2>
+      <p class="max-w-3xl mx-auto text-lg leading-relaxed text-indigo-700">
+        La clave del éxito académico está en encontrar la técnica que mejor se adapte a ti y aplicarla con disciplina constante. Recuerda balancear trabajo y descanso para mantener tu mente fresca y productiva. ¡Tu esfuerzo diario te llevará lejos!
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white py-8 mt-20 rounded-t-3xl shadow-inner">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <p class="text-lg">&copy; 2025 Estudia Mejor. Creado por Leandro Pineda.</p>
+      <p class="mt-2 text-sm opacity-80">Diseñado para ayudarte a estudiar mejor con técnicas modernas y efectivas.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Pomodoro Mejorado con modos y conteo de rondas
+    const workTime = 25 * 60;
+    const shortBreakTime = 5 * 60;
+    const longBreakTime = 15 * 60;
+    const roundsToLongBreak = 4;
+
+    let timeLeft = workTime;
+    let isRunning = false;
+    let timer;
+    let currentMode = 'work'; // 'work', 'shortBreak', 'longBreak'
+    let roundsCompleted = 0;
+
+    const timerDisplay = document.getElementById('timer');
+    const roundCountDisplay = document.getElementById('roundCount');
+    const workModeBtn = document.getElementById('workMode');
+    const shortBreakBtn = document.getElementById('shortBreakMode');
+    const longBreakBtn = document.getElementById('longBreakMode');
+
+    function updateDisplay() {
+      const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const seconds = String(timeLeft % 60).padStart(2, '0');
+      timerDisplay.textContent = `${minutes}:${seconds}`;
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      clearInterval(timer);
+      isRunning = false;
+
+      if (mode === 'work') timeLeft = workTime;
+      else if (mode === 'shortBreak') timeLeft = shortBreakTime;
+      else if (mode === 'longBreak') timeLeft = longBreakTime;
+
+      updateDisplay();
+      updateModeButtons();
+    }
+
+    function updateModeButtons() {
+      workModeBtn.classList.remove('active');
+      shortBreakBtn.classList.remove('active');
+      longBreakBtn.classList.remove('active');
+
+      if (currentMode === 'work') workModeBtn.classList.add('active');
+      else if (currentMode === 'shortBreak') shortBreakBtn.classList.add('active');
+      else if (currentMode === 'longBreak') longBreakBtn.classList.add('active');
+    }
+
+    function startTimer() {
+      if (isRunning) return;
+      isRunning = true;
+      timer = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateDisplay();
+        } else {
+          clearInterval(timer);
+          isRunning = false;
+          if (currentMode === 'work') {
+            roundsCompleted++;
+            roundCountDisplay.textContent = roundsCompleted;
+            if (roundsCompleted % roundsToLongBreak === 0) {
+              alert('¡Buen trabajo! Has completado 4 rondas. Descanso largo.');
+              switchMode('longBreak');
+            } else {
+              alert('¡Tiempo de descanso corto!');
+              switchMode('shortBreak');
+            }
+          } else {
+            alert('¡Tiempo para volver al trabajo!');
+            switchMode('work');
+          }
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timer);
+      isRunning = false;
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      isRunning = false;
+      roundsCompleted = 0;
+      roundCountDisplay.textContent = roundsCompleted;
+      switchMode('work');
+    }
+
+    // Cambiar modo al hacer click en botones de modo
+    workModeBtn.addEventListener('click', () => switchMode('work'));
+    shortBreakBtn.addEventListener('click', () => switchMode('shortBreak'));
+    longBreakBtn.addEventListener('click', () => switchMode('longBreak'));
+
+    // Inicialización
+    updateDisplay();
+    updateModeButtons();
+
+    // Animaciones al hacer scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.3,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('visible');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+</html>
